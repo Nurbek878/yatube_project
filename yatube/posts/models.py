@@ -3,10 +3,14 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Group(models.Model):
     title = models.TextField()
     slug = models.SlugField(unique=True)
-    description = models.TextField() 
+    description = models.TextField()
+
+    def __str__(self):
+        return (self.title)
 
 
 class Post(models.Model):
@@ -24,4 +28,3 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='group'
     )
-# Create your models here.
